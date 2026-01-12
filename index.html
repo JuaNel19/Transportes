@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportes G&M | Fletes y Encomiendas</title>
+    <link rel="stylesheet" href="G&M.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="#inicio" class="nav-logo__link" aria-label="Transportes G&M - Inicio">
+                        <img src="imagenes/logo.webp" alt="Transportes G&M" class="nav-logo__img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#inicio" class="nav-link">INICIO</a></li>
+                    <li class="nav-item"><a href="#nosotros" class="nav-link">NOSOTROS</a></li>                    
+                    <li class="nav-item dropdown">
+                        <a href="#servicios" class="nav-link">SERVICIOS <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#servicios">Fletes Exclusivos</a></li>
+                            <li><a href="#servicios">Encomiendas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a href="#flota" class="nav-link">FLOTA</a></li>
+                    <li class="nav-item"><a href="#contacto" class="nav-link">CONTACTO</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-image">
+            <img src="imagenes/affternonCar.webp" alt="Transporte en carretera" class="hero-bg-image">
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>TRANSPORTES G&M</h1>
+                <h2>Fletes y Encomiendas a Nivel Nacional</h2>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">COTIZAR AHORA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header" onclick="toggleChat()">
+            <div class="chat-header-info">
+                <img src="imagenes/logo.webp" alt="Asistente" class="chat-avatar">
+                <div>
+                    <h4>Asistente G&M</h4>
+                    <p>En línea 🟢</p>
+                </div>
+            </div>
+            <button class="close-chat">&times;</button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="message bot-message">
+                <p>¡Hola! 👋 Bienvenido a Transportes G&M.</p>
+            </div>
+            <div class="message bot-message">
+                <p>¿Deseas cotizar un flete o enviar una encomienda?</p>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <button class="chat-toggle-btn" onclick="toggleChat()">
+        <i class="fab fa-whatsapp"></i>
+        <span class="notification-badge">1</span>
+    </button>
+
+    <section id="nosotros" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>TRANSPORTES G&M</h2>
+                    <h3>Su carga en buenas manos</h3>
+                    <p>Somos una empresa dedicada al servicio de fletes y transporte de mercadería. Nos enfocamos en brindar una atención personalizada, asegurando que sus bienes lleguen a su destino intactos y a tiempo.</p>
+                    <p>Contamos con unidades modernas Hino 300, ideales para acceder tanto a zonas urbanas como rutas nacionales, ofreciendo la flexibilidad que su negocio necesita.</p>
+                    <a href="#flota" class="btn btn-primary">VER UNIDADES</a>
+                </div>
+                <div class="about-image">
+                    <img src="/imagenes/imageNosotros.webp" alt="Nuestro equipo" class="about-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>NUESTROS SERVICIOS</h2>
+                <h3>Soluciones de Transporte Ágil</h3>
+                <p>Llevamos su carga de forma segura y eficiente.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h4>Fletes Exclusivos</h4>
+                    <p>Camión completo a su disposición para traslados directos, mudanzas o mercadería delicada.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h4>Encomiendas</h4>
+                    <p>Envío de paquetería y carga consolidada a diversos destinos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h4>Reparto Local</h4>
+                    <p>Distribución puerta a puerta dentro de la ciudad con unidades ágiles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿POR QUÉ ELEGIRNOS?</h2>
+                <h3>Compromiso y Seguridad</h3>
+                <p>Nos especializamos en el transporte rápido. Nuestros conductores cuidan su carga como si fuera propia.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Seguridad Total</h4>
+                    <p>Monitoreo constante y unidades aseguradas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h4>Puntualidad</h4>
+                    <p>Cumplimos estrictamente con los tiempos de entrega acordados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-thumbs-up"></i></div>
+                    <h4>Atención Personalizada</h4>
+                    <p>Trato directo y soluciones a su medida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flota" class="fleet">
+        <div class="container">
+            <div class="section-header">
+                <h2>NUESTRA FLOTA</h2>
+                <h3>Unidades Modernas Hino 300</h3>
+                <p>Camiones furgón cerrados para garantizar la protección total contra el clima y riesgos externos.</p>
+            </div>
+            <div class="fleet-grid">
+                <div class="fleet-item">
+                    <div class="fleet-photo-wrapper">
+                        <img src="imagenes/flota1.webp" alt="Camión Hino 300 Unidad 1" class="fleet-photo">
+                    </div>
+                    <div class="fleet-info">
+                        <h4>Hino 300 - Unidad 01</h4>
+                        <p class="fleet-desc">Capacidad de 4 a 5 Toneladas. Ideal para mudanzas y carga general.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check-circle"></i> Furgón Cerrado</li>
+                            <li><i class="fas fa-check-circle"></i> GPS Integrado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fleet-item">
+                    <div class="fleet-photo-wrapper">
+                        <img src="imagenes/flota2.webp" alt="Camión Hino 300 Unidad 2" class="fleet-photo">
+                    </div>
+                    <div class="fleet-info">
+                        <h4>Hino 300 - Unidad 02</h4>
+                        <p class="fleet-desc">Unidad ágil para rutas nacionales y reparto.</p>
+                        <ul class="fleet-features">
+                            <li><i class="fas fa-check-circle"></i> Permisos MTC</li>
+                            <li><i class="fas fa-check-circle"></i> Seguro de Carga</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>CONTÁCTENOS</h2>
+                <h3>Estamos para servirle</h3>
+                <p>Escríbanos si tiene alguna duda o desea una cotización.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/TU_CODIGO_AQUI" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mensaje" placeholder="Detalles de su carga (Origen, Destino, Peso)" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">ENVIAR MENSAJE</button>
+                    </form>
+                </div>
+                <div class="contact-info-wrapper">
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Llámanos</h4>
+                            <p>984 100 809</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Escríbenos</h4>
+                            <p>transportesG&M@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Paijan, Perú</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TRANSPORTES G&M</h3>
+                    <p>Su socio confiable para el transporte de carga terrestre a nivel nacional.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>HORARIO</h4>
+                    <p>LUN – SAB : 08am – 06pm</p>
+                    <p>DOMINGO : Previa coordinación</p>
+                </div>
+                <div class="footer-section">
+                    <h4>SERVICIOS</h4>
+                    <ul>
+                        <li>Fletes Exclusivos</li>
+                        <li>Encomiendas</li>
+                        <li>Mudanzas</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>CONTACTO</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Paijan, Perú</p>
+                    <p><i class="fas fa-phone"></i> 984 100 809</p>
+                    <p><i class="fas fa-envelope"></i> transportesG&M@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Transportes G&M | © 2025 Todos los Derechos Reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="G&M.js"></script>
+</body>
+</html>
