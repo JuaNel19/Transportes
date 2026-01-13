@@ -1,17 +1,21 @@
-// 1. NAVIGATION LOGIC
+// 1. NAVIGATION LOGIC (Menú hamburguesa y sombra)
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 // Toggle Menu
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
 // Close menu when clicking link
 document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
+    if (hamburger) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
 }));
 
 // Header shadow on scroll
@@ -24,7 +28,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 2. SMOOTH SCROLLING
+// 2. SMOOTH SCROLLING (Desplazamiento suave)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -40,7 +44,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 3. ANIMATIONS ON SCROLL
+// 3. ANIMATIONS ON SCROLL (Aparición de elementos)
 const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// 4. BACK TO TOP BUTTON
+// 4. BACK TO TOP BUTTON (Botón subir)
 const backToTopBtn = document.createElement('button');
 backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
 backToTopBtn.className = 'back-to-top';
@@ -81,7 +85,7 @@ backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// 5. NOTIFICATION SYSTEM
+// 5. NOTIFICATION SYSTEM (Notificaciones bonitas)
 function showNotification(message, type = 'info') {
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) existingNotification.remove();
@@ -95,13 +99,14 @@ function showNotification(message, type = 'info') {
         </div>
     `;
     
-    // Inline styles for simplicity
+    // Estilos inline para asegurar que se vea bien sin tocar el CSS
     notification.style.cssText = `
         position: fixed; top: 120px; right: 20px;
         background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
         color: white; padding: 1rem 1.5rem; border-radius: 8px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 10000;
         transform: translateX(100%); transition: transform 0.3s ease;
+        font-family: 'Poppins', sans-serif;
     `;
     
     document.body.appendChild(notification);
@@ -112,7 +117,7 @@ function showNotification(message, type = 'info') {
     }, 4000);
 }
 
-// 6. CONTACT FORM HANDLING (FORMSPREE)
+// 6. CONTACT FORM HANDLING (Formulario de contacto)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -144,53 +149,4 @@ if (contactForm) {
     });
 }
 
-// 7. CHATBOT LOGIC
-function toggleChat() {
-    const chatWidget = document.getElementById('chatWidget');
-    const toggleBtn = document.querySelector('.chat-toggle-btn');
-    chatWidget.classList.toggle('active');
-    
-    // Hide floating button when chat is open
-    if (chatWidget.classList.contains('active')) {
-        toggleBtn.style.opacity = '0';
-        toggleBtn.style.visibility = 'hidden';
-    } else {
-        toggleBtn.style.opacity = '1';
-        toggleBtn.style.visibility = 'visible';
-    }
-}
-
-// Solución para que la X cierre el chat sin conflictos
-const closeBtn = document.querySelector('.close-chat');
-if (closeBtn) {
-    closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // <--- ESTA ES LA CLAVE: Evita que el clic "rebote" a la cabecera
-        toggleChat();
-    });
-}
-function sendMessage() {
-    const input = document.getElementById('chatInput');
-    const message = input.value.trim();
-    const chatBody = document.getElementById('chatBody');
-    
-    if (message !== "") {
-        const userDiv = document.createElement('div');
-        userDiv.className = 'message user-message';
-        userDiv.innerHTML = `<p>${message}</p>`;
-        chatBody.appendChild(userDiv);
-        input.value = "";
-        chatBody.scrollTop = chatBody.scrollHeight;
-
-        setTimeout(() => {
-            // REEMPLAZA CON TU NÚMERO DE WHATSAPP (código de país + número)
-            const phone = "51928455502"; 
-            const text = encodeURIComponent(message);
-            const url = `https://wa.me/${phone}?text=${text}`;
-            window.open(url, '_blank');
-        }, 1000);
-    }
-}
-
-function handleKeyPress(event) {
-    if (event.key === 'Enter') sendMessage();
-}
+// YA NO NECESITAS LA SECCIÓN 7 (CHATBOT) PORQUE AHORA USAS EL ENLACE DIRECTO
