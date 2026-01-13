@@ -160,8 +160,14 @@ function toggleChat() {
     }
 }
 
-document.querySelector('.close-chat').addEventListener('click', toggleChat);
-
+// Solución para que la X cierre el chat sin conflictos
+const closeBtn = document.querySelector('.close-chat');
+if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // <--- ESTA ES LA CLAVE: Evita que el clic "rebote" a la cabecera
+        toggleChat();
+    });
+}
 function sendMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
