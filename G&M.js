@@ -177,7 +177,7 @@ function sendMessage() {
 
         setTimeout(() => {
             // REEMPLAZA CON TU NÚMERO DE WHATSAPP (código de país + número)
-            const phone = "51984100809"; 
+            const phone = "51928455502"; 
             const text = encodeURIComponent(message);
             const url = `https://wa.me/${phone}?text=${text}`;
             window.open(url, '_blank');
